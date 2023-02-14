@@ -1,0 +1,205 @@
+@import './variables';
+
+// ----- RESET ----- //
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica';
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  isolation: isolate;
+  height: 100%;
+}
+
+// ----- STYLING ----- //
+
+.home {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  border: 1px solid rgb(195, 196, 199);
+  width: 90%;
+  height: 90%;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.chat {
+  flex: 2;
+}
+
+.sidenav {
+  border-right: 1px solid rgb(210, 215, 219);
+}
+
+.sidenav,
+.chatnav {
+  background-color: rgb(240, 242, 245);
+  display: flex;
+  align-items: center;
+  height: 55px;
+  padding: 0 1em;
+  justify-content: space-between;
+}
+
+.search,
+.convos {
+  border-right: 1px solid $border-light;
+}
+
+.convos {
+  height: 100%;
+}
+
+.controls {
+  display: flex;
+}
+
+.button {
+  height: 10px;
+  width: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.button.red {
+  background-color: rgb(237, 106, 94);
+  border: 1px solid rgb(224, 97, 85);
+}
+
+.button.green {
+  background-color: rgb(98, 198, 84);
+  border: 1px solid rgb(89, 184, 73);
+}
+
+.user-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.receiver {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search {
+  background-color: rgb(255, 255, 255);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 0.6rem;
+  border-bottom: 1px solid $border-light;
+}
+
+.search-input,
+.message-input {
+  border: none;
+  border-radius: 7px;
+  height: 70%;
+  width: 85%;
+}
+
+.search-input {
+  background-color: rgb(240, 242, 245);
+  padding: 0;
+  font-size: 1.3rem;
+  &::placeholder {
+    color: $placeholder-text;
+  }
+}
+
+.convos {
+  overflow-y: scroll;
+}
+.convo-item {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.convo-item:nth-child(1) {
+  .convo-details {
+    border: none;
+  }
+}
+
+.convo-details {
+  width: 80%;
+  height: 100%;
+  border-top: 1px solid $border-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+}
