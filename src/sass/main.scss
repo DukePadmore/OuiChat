@@ -66,7 +66,7 @@ h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -100,7 +100,7 @@ h6 {
 
 .sidenav,
 .chatnav {
-  background-color: rgb(240, 242, 245);
+  background-color: $color-primary;
   display: flex;
   align-items: center;
   height: 55px;
@@ -152,11 +152,16 @@ h6 {
 }
 
 .search-input,
-.message-input {
+.input-message {
   border: none;
   border-radius: 7px;
   height: 70%;
-  width: 85%;
+  outline: none;
+  padding: 0 1rem;
+
+  &::placeholder {
+    color: $text-placeholder;
+  }
 }
 
 .search,
@@ -175,17 +180,12 @@ h6 {
 }
 
 .search-input {
-  background-color: rgb(240, 242, 245);
-  padding: 0 1rem;
+  background-color: $color-primary;
+  width: 85%;
   font-size: 1.3rem;
-  outline: none;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  &::placeholder {
-    color: $text-placeholder;
-  }
 }
 
 .convos {
@@ -195,12 +195,13 @@ h6 {
 
 .convo-item {
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   height: 70px;
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
+  cursor: pointer;
 
   &:nth-of-type(1) {
     .convo-details {
@@ -208,11 +209,8 @@ h6 {
     }
   }
 
-  &:last-of-type {
-    margin-bottom: 2rem;
-    margin-left: 0.5rem;
-    padding: 0;
-    border-bottom: 1px solid $border-light;
+  &:hover {
+    background-color: rgb(245, 246, 246);
   }
 
   .user-img {
@@ -245,7 +243,44 @@ h6 {
 }
 
 .convos-end {
-  margin-bottom: 10rem;
+  border-top: 1px solid $border-light;
+  margin-bottom: 11rem;
+  padding-top: 1rem;
   text-align: center;
   font-size: 1.2rem;
+}
+
+.messages {
+  background-color: rgb(238, 234, 227);
+  height: calc(100% - 110px);
+  overflow: auto;
+  // height: calc(100% - 95px);
+  // margin-bottom: -15px;
+}
+
+.chat-input {
+  height: 55px;
+  background-color: $color-primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.input-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.input-attach input {
+  display: none;
+}
+
+.input-message {
+  flex-grow: 1;
+}
+
+.input-send {
+  margin-left: 1.5rem;
 }

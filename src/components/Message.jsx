@@ -1,5 +1,5 @@
 const Message = () => {
-  return <div>Message</div>;
+  return <div className='message'>Message</div>;
 };
 
 export default Message;
