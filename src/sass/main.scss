@@ -85,7 +85,7 @@ h6 {
 }
 
 .sidenav {
-  border-right: 1px solid rgb(210, 215, 219);
+  border-right: 1px solid $border-light;
 }
 
 .sidenav,
@@ -134,6 +134,7 @@ h6 {
   width: 40px;
   border-radius: 50%;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .receiver {
@@ -162,11 +163,29 @@ h6 {
 
 .search-input {
   background-color: rgb(240, 242, 245);
-  padding: 0;
+  padding: 0 1rem;
   font-size: 1.3rem;
+  outline: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
   &::placeholder {
-    color: $placeholder-text;
+    color: $text-placeholder;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $background-main;
+  border-radius: 100vw;
 }
 
 .convos {
@@ -174,17 +193,31 @@ h6 {
 }
 .convo-item {
   display: flex;
-  justify-content: space-between;
-  height: 65px;
+  // justify-content: space-between;
+  height: 70px;
   align-items: center;
-  padding: 0 1rem;
+  gap: 1rem;
   width: 100%;
+  padding-left: 0.5rem;
+
+  .user-img {
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+  }
 }
 
-.convo-item:nth-child(1) {
+.convo-item:nth-of-type(1) {
   .convo-details {
     border: none;
   }
+}
+
+.convo-item:last-of-type {
+  margin-bottom: 2rem;
+  margin-left: 0.5rem;
+  padding: 0;
+  border-bottom: 1px solid $border-light;
 }
 
 .convo-details {
@@ -196,10 +229,21 @@ h6 {
   justify-content: center;
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 400;
   }
 
   p {
     font-size: 1.4rem;
+    color: $text-secondary;
+    // overflow: hidden;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
   }
+}
+
+.convos-end {
+  margin-bottom: 10rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
