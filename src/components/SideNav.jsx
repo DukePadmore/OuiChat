@@ -1,9 +1,9 @@
 const SideNav = () => {
   return (
     <div className='sidenav'>
-      <div className='controls'>
-        <div className='button red'></div>
-        <div className='button green'></div>
+      <div className='buttons-container'>
+        <div className='buttons red'></div>
+        <div className='buttons green'></div>
       </div>
       <div className='user-img'>
         <img
