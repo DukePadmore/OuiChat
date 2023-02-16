@@ -1,5 +1,5 @@
 import Attach from '../assets/images/paperclip.svg';
-import Emoji from '../assets/images/emoji.svg';
+import Emoji from '../assets/images/smile.svg';
 import Send from '../assets/images/send.svg';
 
 const Input = () => {

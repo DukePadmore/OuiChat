@@ -83,8 +83,8 @@ h6 {
 
 .container {
   border: 1px solid rgb(195, 196, 199);
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   display: flex;
   border-radius: 10px;
   overflow: hidden;
@@ -111,6 +111,12 @@ h6 {
 
 .sidenav {
   border-right: 1px solid $border-light;
+}
+
+.sidenav-icons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .user-img {
@@ -179,14 +185,31 @@ h6 {
   border-bottom: 1px solid $border-light;
 }
 
+.search-form {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .search-input {
   background-color: $color-primary;
-  width: 85%;
+  width: 100%;
   font-size: 1.3rem;
-  padding: 0 1rem;
+  padding-left: 5rem;
+  padding-right: 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.search-button {
+  background-color: transparent;
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  border: none;
 }
 
 .convos {
