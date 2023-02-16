@@ -92,6 +92,7 @@ h6 {
 
 .sidebar {
   flex: 1;
+  padding-bottom: 8.5rem;
 }
 
 .chat {
@@ -157,7 +158,6 @@ h6 {
   border-radius: 7px;
   height: 70%;
   outline: none;
-  padding: 0 1rem;
 
   &::placeholder {
     color: $text-placeholder;
@@ -183,6 +183,7 @@ h6 {
   background-color: $color-primary;
   width: 85%;
   font-size: 1.3rem;
+  padding: 0 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -190,7 +191,7 @@ h6 {
 
 .convos {
   height: 100%;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 .convo-item {
@@ -244,7 +245,7 @@ h6 {
 
 .convos-end {
   border-top: 1px solid $border-light;
-  margin-bottom: 11rem;
+  margin-bottom: 4rem;
   padding-top: 1rem;
   text-align: center;
   font-size: 1.2rem;
@@ -253,7 +254,7 @@ h6 {
 .messages {
   background-color: rgb(238, 234, 227);
   height: calc(100% - 110px);
-  overflow: auto;
+  overflow-y: auto;
   // height: calc(100% - 95px);
   // margin-bottom: -15px;
 }
@@ -279,6 +280,7 @@ h6 {
 
 .input-message {
   flex-grow: 1;
+  padding: 0 1.5rem;
 }
 
 .input-send {
