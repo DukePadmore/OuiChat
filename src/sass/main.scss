@@ -275,7 +275,7 @@ h6 {
 
 .messages {
   // background-color: rgb(238, 234, 227);
-  background-color: rgb(244, 244, 247);
+  background-color: rgb(251, 243, 230);
   height: calc(100% - 110px);
   overflow-y: auto;
   padding: 0 6.5rem;
@@ -406,6 +406,7 @@ h6 {
 
 .input-message {
   flex-grow: 1;
+  font-size: 1.5rem;
   padding: 0 1.5rem;
 }
 
