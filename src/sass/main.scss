@@ -1,6 +1,5 @@
 @import './variables';
-
-// ----------------------- RESET ---------------------- //
+@import './mixins';
 
 *,
 *::before,
@@ -14,6 +13,22 @@
 
 html {
   font-size: 62.5%;
+
+  // @include responsive(big-desk) {
+  //   font-size: 75%; //1rem = 12px
+  // }
+
+  // @include responsive(tab-land) {
+  //   font-size: 56.25%; //1rem = 9px
+  // }
+
+  // @include responsive(tab-port) {
+  //   font-size: 50%; //1rem = 8px (8/16 = 50%)
+  // }
+
+  // @include responsive(phone) {
+  //   font-size: 37.5%; //1rem = 6px
+  // }
 }
 
 html,
@@ -59,8 +74,6 @@ h6 {
   height: 100%;
 }
 
-// ----------------------- STYLING ---------------------- //
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -72,6 +85,10 @@ h6 {
 ::-webkit-scrollbar-thumb {
   background: $background-main;
   border-radius: 100vw;
+}
+
+body {
+  background-color: #e2e8f3;
 }
 
 .home {
@@ -91,12 +108,13 @@ h6 {
 }
 
 .sidebar {
-  flex: 1;
+  width: 35%;
   padding-bottom: 8.5rem;
+  background-color: #fff;
 }
 
 .chat {
-  flex: 2;
+  width: 65%;
 }
 
 .sidenav,
@@ -199,9 +217,9 @@ h6 {
   font-size: 1.3rem;
   padding-left: 5rem;
   padding-right: 1rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
 }
 
 .search-button {
@@ -218,8 +236,8 @@ h6 {
 }
 
 .convo-item {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   height: 70px;
   align-items: center;
   gap: 1rem;
@@ -227,7 +245,7 @@ h6 {
   padding-left: 1rem;
 
   &:nth-of-type(1) {
-    .convo-details {
+    .convo-content {
       border: none;
     }
   }
@@ -237,13 +255,14 @@ h6 {
   }
 
   .user-img {
+    flex-shrink: 0;
     margin-left: 10px;
     height: 50px;
     width: 50px;
   }
 }
 
-.convo-details {
+.convo-content {
   width: 80%;
   height: 100%;
   border-top: 1px solid $border-light;
@@ -259,9 +278,41 @@ h6 {
   p {
     font-size: 1.4rem;
     color: $text-secondary;
-    // overflow: hidden;
-    // white-space: nowrap;
-    // text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 45ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @include responsive(tab-land) {
+    width: 70%;
+  }
+}
+
+.convo-details {
+  position: absolute;
+  height: 100%;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+
+  .convo-last-msg {
+    font-size: 1.1rem;
+  }
+
+  .convo-notif {
+    font-size: 1.2rem;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 1.7;
+    color: #fff;
+    font-weight: 700;
+    background-color: $sent;
+    border-radius: 50%;
   }
 }
 
@@ -274,7 +325,6 @@ h6 {
 }
 
 .messages {
-  // background-color: rgb(238, 234, 227);
   background-color: rgb(251, 243, 230);
   height: calc(100% - 110px);
   overflow-y: auto;
@@ -299,6 +349,10 @@ h6 {
     position: absolute;
     bottom: 3px;
     right: 10px;
+  }
+
+  @include responsive(tab-land) {
+    max-width: 70%;
   }
 }
 
