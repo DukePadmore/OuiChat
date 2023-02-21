@@ -88,8 +88,7 @@ h6 {
 }
 
 body {
-  // background-color: #e2e8f3;
-  background-color: rgb(233, 244, 247);
+  background-color: $background-primary;
 }
 
 .container {
@@ -212,7 +211,7 @@ body {
 }
 
 .search {
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   height: 45px;
   display: flex;
   align-items: center;
@@ -347,8 +346,7 @@ body {
 }
 
 .messages {
-  // background-color: rgb(251, 243, 230);
-  background-color: rgb(233, 244, 247);
+  background-color: $background-secondary;
   height: calc(100% - 110px);
   overflow-y: auto;
   padding: 0 6.5rem;
@@ -497,47 +495,80 @@ body {
 .chatnav .receiver,
 .search-button,
 .input-actions img,
-.input-send {
+.input-send,
+.signup-submit {
   cursor: pointer;
 }
 
-.signup {
+.signup,
+.signin {
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 5.6rem 4.8rem;
+  padding: 4.8rem 3.8rem;
   background-color: #fff;
   border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   h2 {
     color: rgb(61, 66, 85);
     font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.4rem;
   }
 }
 
-.signup-form {
+.signup-form,
+.signin-form {
   display: flex;
+  width: 70%;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   font-size: 1.4rem;
   color: rgb(61, 66, 85);
 
-  label {
-    font-weight: bold;
+  .form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    input {
+      width: 100%;
+      border: 1px solid $border-light;
+      border-radius: 5px;
+      outline: none;
+      padding: 0.8rem 1.2rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 
-  input[type='text'],
-  input[type='email'],
-  input[type='password'] {
-    width: 100%;
-    border: 1px solid $border-light;
-    border-radius: 7px;
+  .image-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+  }
+
+  #profile-pic {
+    display: none;
+  }
+
+  .signup-submit,
+  .signin-submit {
+    margin-top: 2rem;
+    border: none;
     outline: none;
-    padding: 0.8rem 1.2rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    background-color: $color-secondary;
+    color: #fff;
+    font-size: 1.7rem;
+    padding: 1rem 0;
+    border-radius: 5px;
   }
 }
