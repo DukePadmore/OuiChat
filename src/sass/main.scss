@@ -99,7 +99,10 @@ body {
 }
 
 .home {
-  border: 1px solid rgb(195, 196, 199);
+  // border: 1px solid rgb(195, 196, 199);
+  border: 1px solid $border-light;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
   width: 95%;
   height: 95%;
   display: flex;
@@ -501,7 +504,8 @@ body {
 }
 
 .signup,
-.signin {
+.signin,
+.password-reset {
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -518,13 +522,43 @@ body {
     margin-bottom: 1rem;
   }
 
+  .error-message {
+    background-color: rgb(234, 164, 164);
+    color: rgb(123, 25, 25);
+    font-size: 1.3rem;
+    width: 70%;
+    border-radius: 5px;
+    padding: 0.8rem 2rem;
+  }
+
   p {
+    font-size: 1.4rem;
+  }
+
+  .link {
+    text-decoration: none;
+    color: $color-secondary;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}
+
+.password-reset {
+  p {
+    font-size: 1.4rem;
+    width: 70%;
+  }
+
+  .link {
     font-size: 1.4rem;
   }
 }
 
 .signup-form,
-.signin-form {
+.signin-form,
+.password-reset-form {
   display: flex;
   width: 70%;
   flex-direction: column;
@@ -536,6 +570,15 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+
+    &-password {
+      display: flex;
+      justify-content: space-between;
+
+      .password-reset-link {
+        color: $color-secondary;
+      }
+    }
 
     input {
       width: 100%;
@@ -561,7 +604,8 @@ body {
   }
 
   .signup-submit,
-  .signin-submit {
+  .signin-submit,
+  .password-reset-submit {
     margin-top: 2rem;
     border: none;
     outline: none;

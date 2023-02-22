@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Down from '../assets/images/chevron-down.svg';
 import NewMsg from '../assets/images/edit.svg';
 import Logout from '../assets/images/log-out.svg';
@@ -5,6 +8,18 @@ import Settings from '../assets/images/settings.svg';
 import Moon from '../assets/images/moon.svg';
 
 const SideNav = () => {
+  const [error, setError] = useState();
+  const { logOutFirebase, currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logOutFirebase();
+      navigate('/signin');
+      console.log(currentUser);
+    } catch {}
+  };
+
   return (
     <div className='sidenav'>
       <div className='buttons-container'>
@@ -20,7 +35,7 @@ const SideNav = () => {
           />
         </div>
         <div>
-          <img src={Logout} alt='logout icon' />
+          <img src={Logout} alt='logout icon' onClick={handleLogout} />
         </div>
         <div>
           <img src={Settings} alt='settings icon' />
