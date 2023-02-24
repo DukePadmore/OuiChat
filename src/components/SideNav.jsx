@@ -10,7 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 const SideNav = () => {
   const [error, setError] = useState();
   const { logOutFirebase, currentUser } = useAuth();
-  const { toggleIsDark, isDark } = useTheme();
+  const { toggleIsDark, isDark, toggleIsFullScreen, isFullScreen } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -25,11 +25,18 @@ const SideNav = () => {
     toggleIsDark();
   };
 
+  const handleToggleFullScreen = () => {
+    toggleIsFullScreen();
+  };
+
   return (
     <div className='sidenav'>
       <div className='buttons-container'>
-        <div className='buttons red'></div>
-        <div className='buttons green'></div>
+        <div className='buttons red' onClick={handleLogout}></div>
+        <div
+          className={isFullScreen ? 'buttons yellow' : 'buttons green'}
+          onClick={toggleIsFullScreen}
+        ></div>
       </div>
 
       <div className='sidenav-icons'>

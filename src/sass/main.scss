@@ -107,6 +107,11 @@ h6 {
   overflow: hidden;
 }
 
+.home.full {
+  height: 100%;
+  width: 100%;
+}
+
 .sidebar {
   width: 35%;
   padding-bottom: 8.5rem;
@@ -180,6 +185,11 @@ h6 {
 .buttons.green {
   background-color: rgb(98, 198, 84);
   border: 1px solid rgb(89, 184, 73);
+}
+
+.buttons.yellow {
+  background-color: rgb(244, 191, 79);
+  border: 1px solid rgb(231, 182, 70);
 }
 
 .receiver {
