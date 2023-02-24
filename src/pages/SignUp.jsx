@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { Link, useNavigate } from 'react-router-dom';
 import Img from '../assets/images/image.svg';
 
@@ -9,6 +10,7 @@ const SignUp = () => {
   const passwordRef = useRef();
   const picRef = useRef();
   const { signUpFirebase } = useAuth();
+  const { isDark } = useTheme();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={isDark ? 'container dark-mode' : 'container'}>
       <div className='signup'>
         <h2>Create your account</h2>
         {error && <span className='error-message'>{error}</span>}

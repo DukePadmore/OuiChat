@@ -1,11 +1,13 @@
 import { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { signInFirebase, currentUser } = useAuth();
+  const { isDark } = useTheme();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={isDark ? 'container dark-mode' : 'container'}>
       <div className='signin'>
         <h2>Sign in to your account</h2>
         {error && <span className='error-message'>Failed</span>}

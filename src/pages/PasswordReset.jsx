@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 
 const PasswordReset = () => {
@@ -8,6 +9,7 @@ const PasswordReset = () => {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const { resetPasswordFirebase } = useAuth();
+  const { isDark } = useTheme();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -27,7 +29,7 @@ const PasswordReset = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={isDark ? 'container dark-mode' : 'container'}>
       <div className='password-reset'>
         <h2>Reset your password</h2>
         <p>

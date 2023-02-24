@@ -87,15 +87,12 @@ h6 {
   border-radius: 100vw;
 }
 
-body {
-  background-color: $background-primary;
-}
-
 .container {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: $background-primary;
 }
 
 .home {
@@ -137,10 +134,6 @@ body {
   padding: 0 1em;
   justify-content: space-between;
 }
-
-// .chatnav {
-//   border-bottom: 1px solid $border-light;
-// }
 
 .sidenav {
   border-right: 1px solid $border-light;
@@ -614,5 +607,123 @@ body {
     font-size: 1.7rem;
     padding: 1rem 0;
     border-radius: 5px;
+  }
+}
+
+// ---------- DARK MODE ---------- //
+
+.container.dark-mode {
+  background-color: rgb(46, 55, 71);
+  .sidenav,
+  .chatnav,
+  .search-input,
+  .chat-input,
+  .convo-item:hover {
+    background-color: rgb(34, 44, 55);
+  }
+
+  .convo-notif,
+  .message-img,
+  .message-text,
+  .signup-submit,
+  .signin-submit,
+  .password-reset-submit {
+    background-color: rgb(26, 103, 186);
+  }
+  .message.sent {
+    .message-content::before {
+      border-top: 20px solid rgb(26, 103, 186);
+    }
+
+    .message-img,
+    .message-text {
+      background-color: rgb(26, 103, 186);
+    }
+  }
+
+  .message.received {
+    .message-content::before {
+      border-top: 20px solid #2e3644;
+    }
+
+    .message-img,
+    .message-text {
+      background-color: #2e3644;
+    }
+  }
+
+  .search,
+  .convos {
+    background-color: rgb(19, 27, 32);
+  }
+
+  .messages {
+    background-color: rgb(28, 38, 48);
+  }
+
+  .home {
+    border: 1px solid rgb(36, 45, 51);
+  }
+
+  .signin,
+  .signup,
+  .password-reset {
+    background-color: rgb(36, 45, 51);
+  }
+
+  .sidenav,
+  .search,
+  .convos {
+    border-right: 1px solid rgb(36, 45, 51);
+  }
+
+  .search {
+    border-bottom: 1px solid rgb(36, 45, 51);
+  }
+
+  .convo-content {
+    border-top: 1px solid rgb(36, 45, 51);
+  }
+
+  .convos-end {
+    border-top: 1px solid rgb(36, 45, 51);
+  }
+
+  .input-message {
+    background-color: rgb(46, 55, 71);
+  }
+
+  .receiver p,
+  .convo-item h3,
+  .convos-end,
+  .message p,
+  .message span,
+  .search-input,
+  .input-message {
+    color: white;
+  }
+
+  .convo-item p,
+  .convo-item span,
+  .search-input::placeholder,
+  .input-message::placeholder {
+    color: rgb(137, 150, 159);
+  }
+
+  .message-img,
+  .message-text {
+    box-shadow: none;
+    position: relative;
+  }
+
+  .signin,
+  .signup,
+  .password-reset {
+    h2,
+    label,
+    p,
+    .link:hover {
+      color: white;
+    }
   }
 }

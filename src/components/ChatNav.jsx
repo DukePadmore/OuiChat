@@ -4,11 +4,11 @@ const ChatNav = () => {
       <div className='receiver'>
         <div className='user-img'>
           <img
-            src='https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
-            alt='Minion'
+            src='https://pyxis.nymag.com/v1/imgs/963/4d5/cec03aeb2306146b8f68d1fda449246771-recaps-atlanta-ep1.rsquare.w700.jpg'
+            alt='Darius'
           />
         </div>
-        <p>Minion</p>
+        <p>Darius</p>
       </div>
     </div>
   );

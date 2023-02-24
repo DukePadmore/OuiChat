@@ -5,13 +5,17 @@ const Conversation = () => {
     <section className='convo-item'>
       <div className='user-img'>
         <img
-          src='https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
-          alt='Minion'
+          src='https://pyxis.nymag.com/v1/imgs/963/4d5/cec03aeb2306146b8f68d1fda449246771-recaps-atlanta-ep1.rsquare.w700.jpg'
+          alt='Darius'
         />
       </div>
+      <div className='convo-content'>
+        <h3>Darius</h3>
+        <p>What's good ? You ever been to Japan ?</p>
+      </div>
       <div className='convo-details'>
-        <h3>Minion</h3>
-        <p>Salut! Comment tu vas ?</p>
+        <p className='convo-last-msg'>08:50</p>
+        <div className='convo-notif'>8</div>
       </div>
     </section>
   );
