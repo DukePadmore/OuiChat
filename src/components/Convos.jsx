@@ -19,6 +19,15 @@ const Convos = () => {
       <Conversation />
       <Conversation />
       <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
+      <Conversation />
       <p className='convos-end'>Start a new conversation !</p>
     </div>
   );

@@ -17,7 +17,6 @@ const SideNav = () => {
     try {
       await logOutFirebase();
       navigate('/signin');
-      console.log(currentUser);
     } catch {}
   };
 
@@ -42,8 +41,8 @@ const SideNav = () => {
       <div className='sidenav-icons'>
         <div className='user-img'>
           <img
-            src='https://pyxis.nymag.com/v1/imgs/b1c/930/f37a5b262fd32986052d8daf09ca367b03-atlanta.rsquare.w700.jpg'
-            alt='Earn'
+            src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+            alt=''
           />
         </div>
         <div>

@@ -8,39 +8,51 @@ const SignIn = () => {
   const passwordRef = useRef();
   const { signInFirebase, currentUser } = useAuth();
   const { isDark } = useTheme();
-  const [error, setError] = useState('');
+  const [error, setError] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // if (usernameRef.current.value.length < 2) {
-    //     setError('Username must be at least 2 characters');
-    //     return;
-    //   } else if (!emailRef.current.value.length) {
-    //     setError('Please')
-    //   }
+    let errorsArray = [];
+    if (
+      !emailRef.current.value.length ||
+      passwordRef.current.value.length < 6
+    ) {
+      errorsArray.push('Please enter your email and password');
+    }
+
+    if (errorsArray.length) {
+      setError(errorsArray);
+      return;
+    }
 
     try {
-      setError('');
+      errorsArray = [];
       setLoading(true);
       await signInFirebase(emailRef.current.value, passwordRef.current.value);
-      console.log(currentUser);
+      emailRef.current.value = '';
+      passwordRef.current.value = '';
       navigate('/');
     } catch {
-      setError('Failed to log in.');
+      errorsArray.push('Incorrect email or password');
     }
+    setError(errorsArray);
     setLoading(false);
-    emailRef.current.value = '';
-    passwordRef.current.value = '';
   };
 
   return (
     <div className={isDark ? 'container dark-mode' : 'container'}>
       <div className='signin'>
         <h2>Sign in to your account</h2>
-        {error && <span className='error-message'>Failed</span>}
+        {error.length !== 0 && (
+          <ul className='error-message'>
+            {error.map(err => (
+              <li key={err}>{err}</li>
+            ))}
+          </ul>
+        )}
         <form className='signin-form' onSubmit={handleSubmit}>
           <div className='form-inputs'>
             <label htmlFor='email'>Email</label>

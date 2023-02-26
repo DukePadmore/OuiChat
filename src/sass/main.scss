@@ -525,13 +525,23 @@ h6 {
     margin-bottom: 1rem;
   }
 
-  .error-message {
-    background-color: rgb(234, 164, 164);
-    color: rgb(123, 25, 25);
+  .error-message,
+  .success-message {
     font-size: 1.3rem;
     width: 70%;
     border-radius: 5px;
     padding: 0.8rem 2rem;
+  }
+
+  .error-message {
+    background-color: rgb(234, 164, 164);
+    color: rgb(123, 25, 25);
+    list-style: none;
+  }
+
+  .success-message {
+    background-color: rgb(166, 234, 164);
+    color: rgb(17, 95, 42);
   }
 
   p {
@@ -617,6 +627,13 @@ h6 {
     font-size: 1.7rem;
     padding: 1rem 0;
     border-radius: 5px;
+  }
+
+  .signup-submit:disabled,
+  .signin-submit:disabled,
+  .password-reset-submit:disabled {
+    cursor: default;
+    background-color: #6fa7e2;
   }
 }
 

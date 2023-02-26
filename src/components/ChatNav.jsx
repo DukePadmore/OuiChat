@@ -1,4 +1,7 @@
+import { useAuth } from '../context/AuthContext';
+
 const ChatNav = () => {
+  const { currentUser } = useAuth();
   return (
     <div className='chatnav'>
       <div className='receiver'>
@@ -8,7 +11,7 @@ const ChatNav = () => {
             alt='Darius'
           />
         </div>
-        <p>Darius</p>
+        <p>{currentUser?.email}</p>
       </div>
     </div>
   );
