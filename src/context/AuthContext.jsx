@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { auth, storage } from '../utils/firebase-config';
+import { auth, db, storage } from '../utils/firebase-config';
 import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -8,6 +8,8 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = React.createContext();
 
@@ -18,6 +20,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const signUpFirebase = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -35,20 +38,29 @@ export const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  // ---------------- TESTS IMAGE UPLOAD ----------------
-  // const upload = async (file, currentUser) => {
-  //   const fileRef = ref(storage, currentUser.uid + '.png');
-  //   const snapshot = await uploadBytesResumable(fileRef, file);
-  //   const photoURL = await getDownloadURL(fileRef);
-  //   return photoURL;
-  // };
-
-  // const updateFirebase = (currentUser, username, url) => {
-  //   return updateProfile(currentUser, {
-  //     displayName: username,
-  //     photoURL: url,
-  //   });
-  // };
+  const upload = async (file, username, user) => {
+    const storageRef = ref(storage, `profilepictures/${user.uid}.png`);
+    await uploadBytesResumable(storageRef, file).then(() => {
+      getDownloadURL(storageRef).then(async downloadURL => {
+        try {
+          //Update profile
+          await updateProfile(user, {
+            displayName: username,
+            photoURL: downloadURL,
+          });
+          //create user on firestore
+          await setDoc(doc(db, 'users', user.uid), {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: downloadURL,
+          });
+          await setDoc(doc(db, 'userConvos', user.uid), {});
+          navigate('/');
+        } catch {}
+      });
+    });
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -64,7 +76,9 @@ export const AuthProvider = ({ children }) => {
     signInFirebase,
     logOutFirebase,
     resetPasswordFirebase,
+    upload,
   };
+
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}

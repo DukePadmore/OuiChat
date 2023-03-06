@@ -1,50 +1,58 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
-import { Link, useNavigate } from 'react-router-dom';
+import Img from '../assets/images/image.svg';
+// import ProfilePic from '../assets/images/profile-pic.png';
 
 const SignUp = () => {
   const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passworConfirmdRef = useRef();
-  const { signUpFirebase, currentUser } = useAuth();
+  const passwordConfirmRef = useRef();
+  const picRef = useRef();
+  const { signUpFirebase, upload } = useAuth();
   const { isDark } = useTheme();
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async e => {
+    setLoading(true);
     e.preventDefault();
+    const username = usernameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const passwordConfirm = passwordConfirmRef.current.value;
+    const pic = picRef.current.files[0];
 
     let errorsArray = [];
-    if (usernameRef.current.value.length < 2) {
-      errorsArray.push('Please enter your username (at least 4 characters)');
+    if (username.length < 2) {
+      errorsArray.push('Please enter your username (min. 4 characters)');
     }
-    if (!emailRef.current.value.length) {
+    if (!email.length) {
       errorsArray.push('Please enter your email');
     }
-    if (passwordRef.current.value.length < 6) {
-      errorsArray.push('Password must be at least 6 characters');
+    if (password.length < 6) {
+      errorsArray.push('Please enter your password (min. 6 characters)');
     }
-    if (passworConfirmdRef.current.value !== passwordRef.current.value) {
+    if (passwordConfirm !== password) {
       errorsArray.push('Passwords must match');
     }
 
     if (errorsArray.length) {
       setError(errorsArray);
+      setLoading(false);
       return;
     }
 
     try {
       errorsArray = [];
-      setLoading(true);
-      await signUpFirebase(emailRef.current.value, passwordRef.current.value);
-      navigate('/');
+      const res = await signUpFirebase(email, password);
+      await upload(pic, username, res.user);
     } catch {
       errorsArray.push('Failed to create an account with this email');
+      setError(errorsArray);
     }
-    setError(errorsArray);
     setLoading(false);
   };
 
@@ -77,9 +85,14 @@ const SignUp = () => {
             <input
               type='password'
               id='password-confirm'
-              ref={passworConfirmdRef}
+              ref={passwordConfirmRef}
             />
           </div>
+          <label className='image-upload-label' htmlFor='profile-pic'>
+            <img src={Img} alt='image upload icon' />
+            <span>Add a profile picture</span>
+          </label>
+          <input type='file' id='profile-pic' ref={picRef} />
           <button className='signup-submit' disabled={loading}>
             Sign up
           </button>

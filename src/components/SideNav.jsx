@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import NewMsg from '../assets/images/edit.svg';
@@ -8,7 +7,6 @@ import Moon from '../assets/images/moon.svg';
 import { useTheme } from '../context/ThemeContext';
 
 const SideNav = () => {
-  const [error, setError] = useState();
   const { logOutFirebase, currentUser } = useAuth();
   const { toggleIsDark, isDark, toggleIsFullScreen, isFullScreen } = useTheme();
   const navigate = useNavigate();
@@ -17,7 +15,9 @@ const SideNav = () => {
     try {
       await logOutFirebase();
       navigate('/signin');
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleToggleDarkMode = () => {
@@ -34,16 +34,12 @@ const SideNav = () => {
         <div className='buttons red' onClick={handleLogout}></div>
         <div
           className={isFullScreen ? 'buttons yellow' : 'buttons green'}
-          onClick={toggleIsFullScreen}
+          onClick={handleToggleFullScreen}
         ></div>
       </div>
-
       <div className='sidenav-icons'>
         <div className='user-img'>
-          <img
-            src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-            alt=''
-          />
+          <img src={currentUser.photoURL} alt={currentUser.displayName} />
         </div>
         <div>
           <img src={Logout} alt='logout icon' onClick={handleLogout} />
@@ -56,9 +52,9 @@ const SideNav = () => {
             onClick={handleToggleDarkMode}
           />
         </div>
-        <div>
+        {/* <div>
           <img src={NewMsg} alt='new-message icon' />
-        </div>
+        </div> */}
       </div>
     </div>
   );
