@@ -12,7 +12,8 @@ import {
 
 const ConvoSearch = ({ displayName, photoURL, uid }) => {
   const { currentUser } = useAuth();
-  const { searchedUser, setSearchedUser, setIsSearchActive } = useSearch();
+  const { searchedUser, setSearchedUser, setIsSearchActive, setSearchInput } =
+    useSearch();
 
   const handleSelect = async () => {
     const chatId =
@@ -43,6 +44,7 @@ const ConvoSearch = ({ displayName, photoURL, uid }) => {
     } catch (err) {}
     setSearchedUser(null);
     setIsSearchActive(false);
+    setSearchInput('');
   };
 
   return (

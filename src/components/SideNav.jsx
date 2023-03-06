@@ -52,9 +52,6 @@ const SideNav = () => {
             onClick={handleToggleDarkMode}
           />
         </div>
-        {/* <div>
-          <img src={NewMsg} alt='new-message icon' />
-        </div> */}
       </div>
     </div>
   );

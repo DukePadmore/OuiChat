@@ -17,21 +17,28 @@ const Search = () => {
   const searchRef = useRef();
   const [error, setError] = useState('');
 
-  const handleChange = () => {
-    if (!searchRef.current.value) {
+  // const handleChange = () => {
+  //   if (!searchRef.current.value) {
+  //     setSearchedUser(null);
+  //     setIsSearchActive(false);
+  //   }
+  // };
+  const handleChange = e => {
+    if (!e.target.value) {
       setSearchedUser(null);
       setIsSearchActive(false);
     }
+    setSearchInput(e.target.value);
   };
 
   const handleSearchSubmit = async e => {
     e.preventDefault();
-    if (!searchRef.current.value) {
+    if (!searchInput) {
       return;
     }
     const q = query(
       collection(db, 'users'),
-      where('email', '==', searchRef.current.value.toLowerCase())
+      where('email', '==', searchInput.toLowerCase())
     );
     try {
       const querySnapshot = await getDocs(q);
@@ -39,11 +46,7 @@ const Search = () => {
         setSearchedUser(doc.data());
       });
       setIsSearchActive(true);
-    } catch {
-      // console.log('nope');
-      // searchRef.current.value = '';
-      // setError("Couldn't find a user by this name");
-    }
+    } catch {}
   };
 
   return (
@@ -53,7 +56,7 @@ const Search = () => {
           className='search-input'
           type='text'
           placeholder='Start a new conversation'
-          ref={searchRef}
+          value={searchInput}
           onChange={handleChange}
         />
         {error && <p>{error}</p>}
