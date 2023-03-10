@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { auth, db, storage } from '../utils/firebase-config';
 import {
   createUserWithEmailAndPassword,
@@ -11,7 +11,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
 export const useAuth = () => {
   return useContext(AuthContext);

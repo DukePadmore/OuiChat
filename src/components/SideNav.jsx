@@ -1,6 +1,5 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import NewMsg from '../assets/images/edit.svg';
 import Logout from '../assets/images/log-out.svg';
 import Sun from '../assets/images/sun.svg';
 import Moon from '../assets/images/moon.svg';

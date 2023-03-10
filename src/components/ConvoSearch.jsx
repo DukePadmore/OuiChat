@@ -12,15 +12,15 @@ import {
 
 const ConvoSearch = ({ displayName, photoURL, uid }) => {
   const { currentUser } = useAuth();
-  const { searchedUser, setSearchedUser, setIsSearchActive, setSearchInput } =
-    useSearch();
+  const { setSearchedUser, setIsSearchActive, setSearchInput } = useSearch();
 
-  const handleSelect = async () => {
+  const handleClick = async () => {
     const chatId =
       currentUser.uid > uid ? currentUser.uid + uid : uid + currentUser.uid;
+
     try {
-      console.log('starting');
       const res = await getDoc(doc(db, 'chats', chatId));
+
       if (!res.exists()) {
         await setDoc(doc(db, 'chats', chatId), { messages: [] });
 
@@ -42,19 +42,18 @@ const ConvoSearch = ({ displayName, photoURL, uid }) => {
         });
       }
     } catch (err) {}
-    setSearchedUser(null);
+    setSearchedUser('');
     setIsSearchActive(false);
     setSearchInput('');
   };
 
   return (
-    <section className='convo-item' onClick={handleSelect}>
+    <section className='convo-item' onClick={handleClick}>
       <div className='user-img'>
         <img src={photoURL} alt={displayName} />
       </div>
       <div className='convo-content'>
         <h3>{displayName}</h3>
-        <p>What's good ? You ever been to Japan ?</p>
       </div>
       <div className='convo-details'>
         <p className='convo-last-msg'>08:50</p>

@@ -24,14 +24,14 @@ const Convos = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
-  console.log(chats);
-
   return (
     <div className='convos'>
       {isSearchActive && searchedUser ? (
         <ConvoSearch {...searchedUser} />
       ) : (
-        chats.map(chat => <Conversation key={chat[0]} {...chat[1].userInfo} />)
+        chats
+          ?.sort((a, b) => b[1].date - a[1].date)
+          .map(chat => <Conversation key={chat[0]} {...chat[1]} />)
       )}
       <p className='convos-end'>Start a new conversation !</p>
     </div>

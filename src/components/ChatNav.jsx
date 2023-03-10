@@ -1,17 +1,14 @@
-import { useAuth } from '../context/AuthContext';
+import { useChat } from '../context/ChatContext';
 
 const ChatNav = () => {
-  const { currentUser } = useAuth();
+  const { data } = useChat();
   return (
     <div className='chatnav'>
       <div className='receiver'>
         <div className='user-img'>
-          <img
-            src='https://pyxis.nymag.com/v1/imgs/963/4d5/cec03aeb2306146b8f68d1fda449246771-recaps-atlanta-ep1.rsquare.w700.jpg'
-            alt='Darius'
-          />
+          <img src={data.user?.photoURL} alt={data.user?.displayName} />
         </div>
-        <p>{currentUser?.email}</p>
+        <p>{data.user?.displayName}</p>
       </div>
     </div>
   );
