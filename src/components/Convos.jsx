@@ -16,7 +16,7 @@ const Convos = () => {
       const unsubscribe = onSnapshot(
         doc(db, 'userConvos', currentUser.uid),
         doc => {
-          setChats(Object.entries(doc.data()));
+          setChats(Object.entries(doc?.data()));
         }
       );
       return unsubscribe;

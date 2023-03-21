@@ -55,10 +55,6 @@ const ConvoSearch = ({ displayName, photoURL, uid }) => {
       <div className='convo-content'>
         <h3>{displayName}</h3>
       </div>
-      <div className='convo-details'>
-        <p className='convo-last-msg'>08:50</p>
-        <div className='convo-notif'>8</div>
-      </div>
     </section>
   );
 };

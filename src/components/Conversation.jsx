@@ -1,7 +1,7 @@
 import React from 'react';
 import { useChat } from '../context/ChatContext';
 
-const Conversation = ({ userInfo, lastMessage, date }) => {
+const Conversation = ({ userInfo, lastMessage }) => {
   const { dispatch } = useChat();
 
   const handleClick = (id, name, image) => {
@@ -26,7 +26,7 @@ const Conversation = ({ userInfo, lastMessage, date }) => {
         <p>{lastMessage?.text}</p>
       </div>
       {/* <div className='convo-details'>
-        <p className='convo-last-msg'>08:37</p>
+        <p className='convo-last-msg'>{lastMessage.date}</p>
         <div className='convo-notif'>8</div>
       </div> */}
     </section>

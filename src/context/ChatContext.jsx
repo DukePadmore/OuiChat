@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 import { useAuth } from './AuthContext';
 
 export const ChatContext = createContext();
@@ -24,6 +30,11 @@ export const ChatProvider = ({ children }) => {
             currentUser.uid > action.payload.uid
               ? currentUser.uid + action.payload.uid
               : action.payload.uid + currentUser.uid,
+        };
+      case 'LOG_OUT_USER':
+        return {
+          user: {},
+          chatId: 'null',
         };
       default: {
         return state;

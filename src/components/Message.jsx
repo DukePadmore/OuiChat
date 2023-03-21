@@ -4,13 +4,16 @@ import { useChat } from '../context/ChatContext';
 
 const Message = ({ message }) => {
   const { currentUser } = useAuth();
-  const { data } = useChat();
 
   const ref = useRef();
 
   useEffect(() => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
   }, [message]);
+
   return (
     <div
       ref={ref}

@@ -1,4 +1,5 @@
 import { useAuth } from '../context/AuthContext';
+import { useChat } from '../context/ChatContext';
 import { useNavigate } from 'react-router-dom';
 import Logout from '../assets/images/log-out.svg';
 import Sun from '../assets/images/sun.svg';
@@ -9,9 +10,13 @@ const SideNav = () => {
   const { logOutFirebase, currentUser } = useAuth();
   const { toggleIsDark, isDark, toggleIsFullScreen, isFullScreen } = useTheme();
   const navigate = useNavigate();
+  const { dispatch } = useChat();
 
   const handleLogout = async () => {
     try {
+      dispatch({
+        type: 'LOG_OUT_USER',
+      });
       await logOutFirebase();
       navigate('/signin');
     } catch (e) {

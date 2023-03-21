@@ -1,14 +1,14 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import SearchIcon from '../assets/images/search.svg';
 import { db } from '../utils/firebase-config';
 import { useSearch } from '../context/SearchContext';
+import { useAuth } from '../context/AuthContext';
 
 const Search = () => {
+  const { currentUser } = useAuth();
   const { setSearchedUser, setIsSearchActive, searchInput, setSearchInput } =
     useSearch();
-
-  const [error, setError] = useState('');
 
   const handleChange = e => {
     if (!e.target.value) {
@@ -21,6 +21,10 @@ const Search = () => {
   const handleSearchSubmit = async e => {
     e.preventDefault();
     if (!searchInput) {
+      return;
+    }
+    if (searchInput.toLowerCase() === currentUser.email) {
+      setSearchInput('');
       return;
     }
     const q = query(
@@ -46,7 +50,6 @@ const Search = () => {
           value={searchInput}
           onChange={handleChange}
         />
-        {error && <p>{error}</p>}
         <button className='search-button'>
           <img src={SearchIcon} alt='search icon' />
         </button>

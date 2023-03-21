@@ -355,11 +355,30 @@ h6 {
   font-size: 1.2rem;
 }
 
+.welcome-chat {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-chat-message {
+  color: $text-primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+}
+
 .messages {
   background-color: $background-secondary;
   height: calc(100% - 110px);
   overflow-y: auto;
-  padding: 0 6.5rem;
+  padding: 1rem 6.5rem 0;
 }
 
 .message {
@@ -404,8 +423,8 @@ h6 {
   background-color: $color-tertiary;
 
   img {
-    width: 98%;
-    height: 98%;
+    width: 98.5%;
+    height: 98.5%;
     border-radius: 8px;
   }
 
@@ -661,6 +680,7 @@ h6 {
   .password-reset-submit {
     background-color: rgb(26, 103, 186);
   }
+
   .message.sent {
     .message-content::before {
       border-top: 20px solid rgb(26, 103, 186);
@@ -727,6 +747,7 @@ h6 {
   .receiver p,
   .convo-item h3,
   .convos-end,
+  .welcome-chat-message,
   .message p,
   .message span,
   .search-input,
