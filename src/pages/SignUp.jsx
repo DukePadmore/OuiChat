@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import Img from '../assets/images/image.svg';
-// import ProfilePic from '../assets/images/profile-pic.png';
 
 const SignUp = () => {
   const usernameRef = useRef();

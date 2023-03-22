@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const SignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { signInFirebase, currentUser } = useAuth();
+  const { signInFirebase } = useAuth();
   const { isDark } = useTheme();
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState(false);
