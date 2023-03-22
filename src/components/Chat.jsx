@@ -9,13 +9,13 @@ const Chat = () => {
 
   if (data.chatId === 'null') {
     return (
-      <div className='chat'>
+      <div className='chat inactive'>
         <WelcomeChat />
       </div>
     );
   } else {
     return (
-      <div className='chat'>
+      <div className='chat active'>
         <ChatNav />
         <Messages />
         <Input />

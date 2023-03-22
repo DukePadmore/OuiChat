@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 
 const Home = () => {
   const { isDark, isFullScreen } = useTheme();
+
   return (
     <div className={isDark ? 'container dark-mode' : 'container'}>
       <div className={isFullScreen ? 'home full' : 'home'}>

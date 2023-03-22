@@ -31,7 +31,7 @@ export const ChatProvider = ({ children }) => {
               ? currentUser.uid + action.payload.uid
               : action.payload.uid + currentUser.uid,
         };
-      case 'LOG_OUT_USER':
+      case 'ERASE_USER':
         return {
           user: {},
           chatId: 'null',

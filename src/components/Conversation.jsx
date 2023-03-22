@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useChat } from '../context/ChatContext';
 
 const Conversation = ({ userInfo, lastMessage }) => {

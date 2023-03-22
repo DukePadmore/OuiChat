@@ -15,7 +15,7 @@ const SideNav = () => {
   const handleLogout = async () => {
     try {
       dispatch({
-        type: 'LOG_OUT_USER',
+        type: 'ERASE_USER',
       });
       await logOutFirebase();
       navigate('/signin');
