@@ -29,7 +29,7 @@ const Message = ({ message }) => {
             className={message.text ? 'message-img with-text' : 'message-img'}
           >
             <img src={message.image} alt='image content' />
-            <span>20:38</span>
+            {/* <span>20:38</span> */}
           </div>
         )}
         {message.text && (
@@ -39,7 +39,7 @@ const Message = ({ message }) => {
             }
           >
             {message.text}
-            <span>20:38</span>
+            {/* <span>20:38</span> */}
           </p>
         )}
       </div>
