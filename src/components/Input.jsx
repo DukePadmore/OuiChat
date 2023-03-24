@@ -93,9 +93,9 @@ const Input = () => {
   return (
     <div className='chat-input'>
       <div className='input-actions'>
-        <div className='input-emoji'>
+        {/* <div className='input-emoji'>
           <img src={Emoji} alt='Emoji icon' />
-        </div>
+        </div> */}
         <div className='input-attach'>
           <label htmlFor='attach-file'>
             <img src={Attach} alt='Attach file icon' />
